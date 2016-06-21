@@ -29,7 +29,7 @@ namespace Dream
         {
             if (ContextType == null)
             {
-                return new DbContext("ConnectionString");
+                return null;
             }
             return Activator.CreateInstance(ContextType) as DbContext;
         }

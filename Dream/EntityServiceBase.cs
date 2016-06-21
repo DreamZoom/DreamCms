@@ -27,9 +27,8 @@ namespace Dream
             if (DbContext == null)
             {
                 DbContext = new DbContext("ConnectionString");
+                DbContext.Set<TEntity>().AddOrUpdate();
             }
-
-            //DbContext.Set<TEntity>().AddOrUpdate();
         }
 
         public virtual DbContext GetDbContext()

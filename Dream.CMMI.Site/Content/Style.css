@@ -1,0 +1,15 @@
+﻿body {
+}
+.navbar-fixed-top + .container{
+    margin-top:60px;
+}
+
+.form-body .form-group {
+    margin:0px;
+    padding:15px;
+}
+
+.form-actions{
+    margin:0px;
+    padding:15px;
+}

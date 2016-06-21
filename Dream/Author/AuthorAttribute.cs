@@ -13,16 +13,21 @@ namespace Dream.Author
             var controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
             var actionName = filterContext.ActionDescriptor.ActionName;
 
-            var returnUrl = AuthorProvider.Author.ReturnUrl(filterContext.RequestContext);
-            var url = filterContext.HttpContext.Request.Url.ToString();
-
-            returnUrl += "?back_url=" + url;
-
-            if (!AuthorProvider.Author.CheckAuthorize(filterContext.RequestContext))
+            if (AuthorProvider.Author != null)
             {
-                filterContext.Result = new RedirectResult(returnUrl);
-                return;
+                var returnUrl = AuthorProvider.Author.ReturnUrl(filterContext.RequestContext);
+                var url = filterContext.HttpContext.Request.Url.ToString();
+
+                returnUrl += "?back_url=" + url;
+
+                if (!AuthorProvider.Author.CheckAuthorize(filterContext.RequestContext))
+                {
+                    filterContext.Result = new RedirectResult(returnUrl);
+                    return;
+                }
             }
+
+
             base.OnActionExecuting(filterContext);
         }
     }
